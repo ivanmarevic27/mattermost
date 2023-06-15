@@ -555,10 +555,12 @@ class AdvancedCreatePost extends React.PureComponent<Props, State> {
 
             this.setState({message: ''});
         } else {
+            const message = this.state.message;
+            this.setState({message: ''});
             const {error} = await this.sendMessage(post);
 
-            if (!error) {
-                this.setState({message: ''});
+            if (error) {
+                this.setState({message});
             }
         }
 
